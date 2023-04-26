@@ -1,1 +1,1 @@
-Black Jack game implementation for one player and a dealer (computer)
+Black Jack game CLI implementation for one player and a dealer (computer)
