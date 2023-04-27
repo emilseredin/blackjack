@@ -19,3 +19,6 @@ class Player:
 
     def get_first_card(self) -> str:
         return self.cards[0].face
+
+    def receive_cards(self, cards) -> None:
+        self.cards.extend(cards)

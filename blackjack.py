@@ -35,8 +35,8 @@ class BlackJack:
             Play one blackjack game
             Return result of the game
         """
-        self.player.cards = self.dealer.deal(cards=2)
-        self.dealer.cards = self.dealer.deal(cards=2)
+        self.player.receive_cards(self.dealer.deal(cards=2))
+        self.dealer.receive_cards(self.dealer.deal(cards=2)) 
         self.player.calculate_score()
         self.dealer.calculate_score()
         print(f"Your cards: {self.player.get_cards()}")
@@ -57,7 +57,7 @@ class BlackJack:
                 keep_dealing = False
             else:
                 new_card = self.dealer.deal()
-                self.player.cards.extend(new_card)
+                self.player.receive_cards(new_card)
                 self.player.calculate_score()
                 if self.player.score > 21:
                     keep_dealing = False
@@ -70,7 +70,7 @@ class BlackJack:
         # check if a dealer has blackjack
         if self.dealer.score == 21:
             return "Dealer has a Black Jack. You lose."
-        # afterwards cards are dealt to the dealer
+        # if not,  cards are dealt to the dealer
         keep_dealing = True
         while keep_dealing:
             # dealer must draw to 16
@@ -78,7 +78,7 @@ class BlackJack:
                 keep_dealing = False
             else:
                 new_card = self.dealer.deal()
-                self.dealer.cards.extend(new_card)
+                self.dealer.receive_cards(new_card)
                 self.dealer.calculate_score()
                 print(f"Dealer's cards: {self.dealer.get_cards()}")
         print(f"\nDealer's final score: {self.dealer.score}\n")
