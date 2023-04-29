@@ -29,3 +29,6 @@ class Dealer(Player):
         self.shoe = self.shoe[cards:]
         
         return drawn_cards
+    
+    def get_first_card(self) -> str:
+        return self.cards[0].face
